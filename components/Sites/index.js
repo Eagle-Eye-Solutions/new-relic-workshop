@@ -23,7 +23,7 @@ export default class Sites extends Component {
                 query($id: Int!) {
                     actor {
                         account(id: $id) {
-                            site_0: nrql(query: "SELECT average(duration) from PageView where domain='www.prezzoegifts.co.uk' ") {results}
+                            site_0: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='www.prezzoegifts.co.uk' ") {results}
                         }
                     }
                 }
@@ -35,7 +35,6 @@ export default class Sites extends Component {
             const resultsObj = {
                 site_0: results.data.actor.account.site_0.results
             }
-            console.log("resultsObj",resultsObj)
             //set the state with the data from the query
             this.setState({ data: resultsObj})
         }).catch((error) => { console.log(error); })
@@ -51,11 +50,14 @@ export default class Sites extends Component {
         let returnVal = <Spinner inline />
 
         if(data) {
+            console.log("data",data)
             let sites=[]
             config.domain.forEach((domain)=>{
             sites.push(
                 <Grid key={domain}>
-                    <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}><div>One</div></GridItem>
+                    <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}>
+                        {data.site_0[0].AvgDuration}
+                    </GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Two</div></GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Four</div></GridItem>
