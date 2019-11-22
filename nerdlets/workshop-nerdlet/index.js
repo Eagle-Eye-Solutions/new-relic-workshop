@@ -11,7 +11,7 @@ export default class WorkshopNerdletNerdlet extends React.Component {
                 <GridItem className="headerRow" columnSpan={12}><div>Header</div></GridItem>
             </Grid>
             <Grid>
-                <GridItem className="grey" columnSpan={3}><div>One</div></GridItem>
+                <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}><div>One</div></GridItem>
                 <GridItem className="grey" columnSpan={3}><div>Two</div></GridItem>
                 <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
                 <GridItem className="grey" columnSpan={3}><div>Four</div></GridItem>
