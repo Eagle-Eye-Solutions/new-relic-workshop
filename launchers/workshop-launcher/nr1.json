@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "workshop-launcher",
+    "description": "Describe me",
+    "displayName": "WorkshopLauncher",
+    "rootNerdletId": "workshop-nerdlet"
+}
