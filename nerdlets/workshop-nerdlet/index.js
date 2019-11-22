@@ -12,10 +12,29 @@ export default class WorkshopNerdletNerdlet extends React.Component {
         this.state = { deviceType: "ALL"};
     }
 
-    async componentDidUpdate(){
-        // let { launcherUrlState } = this.props
-        // let newTimeRange = launcherUrlState.timeRange
-    }
+    // async componentDidUpdate(){
+    //     let { launcherUrlState } = this.props
+    //     let newTimeRange = launcherUrlState.timeRange
+    //     if(!_.isEqual(this.state.timeRange, newTimeRange)){
+    //         this.setState({since: true})
+    //         let { startTime, endTime, duration } = this.determineTimeWindow(launcherUrlState.timeRange)
+    //         await this.setState({startTime, endTime, duration, timeRange: launcherUrlState.timeRange})
+    //     }
+    // }
+
+    // determineTimeWindow(timeRange){
+    //     let { begin_time, end_time, duration } = timeRange
+    //     if(duration){
+    //         let endTime = new Date().getTime()
+    //         let startTime = endTime - duration
+    //         return { startTime, endTime, duration }
+    //     }else if(begin_time && end_time){
+    //         let startTime = begin_time
+    //         let endTime = end_time
+    //         return { startTime, endTime, duration }
+    //     }
+    //     return null
+    // }
 
     changeDevice(deviceType) {
         this.setState({deviceType: deviceType})
