@@ -1,7 +1,7 @@
 {
     "schemaType": "LAUNCHER",
     "id": "workshop-launcher",
-    "description": "Describe me",
-    "displayName": "WorkshopLauncher",
+    "description": "Example nerdlet",
+    "displayName": "EagleEye Workshop",
     "rootNerdletId": "workshop-nerdlet"
 }
