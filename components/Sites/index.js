@@ -12,6 +12,14 @@ export default class Sites extends Component {
     async componentDidMount() {
         this.loadData()
     }
+
+    componentDidUpdate(prevProps,prevState) {
+        if(prevProps.deviceType !== this.props.deviceType) {
+            //this.setState({data: false})
+            this.loadData()
+        }
+    
+   }
    
 
     loadData() {
@@ -53,9 +61,17 @@ export default class Sites extends Component {
         // const { duration } = this.props.nr1.launcher.state.timeRange;
         // const durationInMinutes = duration / 1000 / 60;
         const durationInMinutes = 60 
+
+        let deviceRestriction = ""
+        if(this.props.deviceType=="MOBILE") {
+            deviceRestriction="where deviceType='Mobile' or deviceType='Tablet'"
+        }
+        if(this.props.deviceType=="DESKTOP") {
+            deviceRestriction="where deviceType='Desktop'"
+        }
         domains.forEach((domain, index) => {
-            domainQueries += `site_${index}: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='${domain}' since ${durationInMinutes} minutes ago") {results}`
-            domainQueries += `site_${index}_plseries: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='${domain}' timeseries since ${durationInMinutes} minutes ago") {results}`
+            domainQueries += `site_${index}: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='${domain}' since ${durationInMinutes} minutes ago ${deviceRestriction}") {results}`
+            domainQueries += `site_${index}_plseries: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='${domain}' timeseries since ${durationInMinutes} minutes ago ${deviceRestriction}") {results}`
         });
 
         return domainQueries;
