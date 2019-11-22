@@ -11,7 +11,7 @@ export default class Header extends Component {
         return  <>
             <div>
                 <h1>{title}</h1>
-                <div>{subtitle}</div>
+                <div className="subtitle">{subtitle}</div>
             </div>
         </>
         
