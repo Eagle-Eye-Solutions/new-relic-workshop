@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 
 export default class Header extends Component {
 
+    static propTypes = {
+        title: PropTypes.string.isRequired,
+        subtitle: PropTypes.string.isRequired
+    }
 
     render() {
 
