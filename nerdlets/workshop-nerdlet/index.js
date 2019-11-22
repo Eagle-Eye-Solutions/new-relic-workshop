@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, GridItem} from 'nr1'
 import Header from "../../components/Header"
+import Sites from "../../components/Sites"
 
 // https://docs.newrelic.com/docs/new-relic-programmable-platform-introduction
 
@@ -14,12 +15,11 @@ export default class WorkshopNerdletNerdlet extends React.Component {
                 "www.sizzlingpubgifts.co.uk"
             ]
         }
-
-
+        
         let sites=[]
-        config.domain.forEach((config)=>{
+        config.domain.forEach((domain)=>{
            sites.push(
-            <Grid>
+            <Grid key={domain}>
                 <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}><div>One</div></GridItem>
                 <GridItem className="grey" columnSpan={3}><div>Two</div></GridItem>
                 <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
