@@ -23,8 +23,7 @@ export default class Sites extends Component {
                 query($id: Int!) {
                     actor {
                         account(id: $id) {
-                                ${this.buildQueryObject()}
-    
+                                ${this.buildQueryObject()}    
                             }
                     }
                 }
@@ -69,9 +68,9 @@ export default class Sites extends Component {
             sites.push(
                 <Grid key={domain}>
                     <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}>
-                        {data[`site_${idx}`][0].AvgDuration}
+                    {domain}
                     </GridItem>
-                    <GridItem className="grey" columnSpan={3}><div>Two</div></GridItem>
+                    <GridItem className="grey" columnSpan={3}>{data[`site_${idx}`][0].AvgDuration}</GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Four</div></GridItem>
                 </Grid>
