@@ -9,7 +9,9 @@ export default class WorkshopNerdletNerdlet extends React.Component {
 
         return <>
             <Grid>
-                <GridItem className="headerRow" columnSpan={12}><div><Header /></div></GridItem>
+                <GridItem className="headerRow" columnSpan={12}>
+                    <Header title="Eagle Eye Dashboard" subtitle="All the apps in one place" />
+                </GridItem>
             </Grid>
             <Grid>
                 <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}><div>One</div></GridItem>
