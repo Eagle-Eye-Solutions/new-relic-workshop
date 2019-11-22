@@ -1,8 +1,47 @@
 import React, { Component } from 'react';
-import { Grid, GridItem} from 'nr1'
+import { Grid, GridItem, NerdGraphQuery} from 'nr1'
 import PropTypes from 'prop-types';
 
 export default class Sites extends Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = { };
+    }
+
+    async componentDidMount() {
+        this.loadData()
+    }
+
+    loadData() {
+
+        const variables = {
+            id: 692732 //eagleeye account id
+        }
+            
+        let query = `
+                query($id: Int!) {
+                    actor {
+                        account(id: $id) {
+                            site_0: nrql(query: "SELECT average(duration) from PageView where domain='www.prezzoegifts.co.uk' ") {results}
+                        }
+                    }
+                }
+            `
+        const q = NerdGraphQuery.query({ query: query, variables: variables })
+
+        //Process the results of the API request
+        q.then(results => {
+            const resultsObj = {
+                site_0: results.data.actor.account.site_0.results
+            }
+              
+            //set the state with the data from the query
+            this.setState({ data: resultsObj})
+        }).catch((error) => { console.log(error); })
+    }
+
+    
 
     render() {
 
