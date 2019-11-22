@@ -10,6 +10,8 @@ export default class WorkshopNerdletNerdlet extends React.Component {
     constructor(props) {
         super(props);
         this.state = { deviceType: "ALL"};
+
+        //this.changeDevice = this.changeDevice.bind(this);
     }
 
     // async componentDidUpdate(){
@@ -36,7 +38,7 @@ export default class WorkshopNerdletNerdlet extends React.Component {
     //     return null
     // }
 
-    changeDevice(deviceType) {
+    changeDevice = (deviceType) => {
         this.setState({deviceType: deviceType})
     }
 
@@ -71,7 +73,7 @@ export default class WorkshopNerdletNerdlet extends React.Component {
                 {(nerdletUrlState) => (
                     <>
                     {map}
-                    <Grid>
+                    <Grid className="Header">
                     <GridItem className="headerRow" columnSpan={8}>
                         <Header title="Eagle Eye Dashboard" subtitle="All the apps in one place" />
                     </GridItem >
@@ -79,7 +81,6 @@ export default class WorkshopNerdletNerdlet extends React.Component {
                         <div onClick={()=>{this.changeDevice('ALL')}}><Icon type={Icon.TYPE.HARDWARE_AND_SOFTWARE__HARDWARE__ANOMALIES} /> All</div>
                         <div onClick={()=>{this.changeDevice('MOBILE')}}><Icon type={Icon.TYPE.HARDWARE_AND_SOFTWARE__HARDWARE__MOBILE} /> Mobile & Tablet</div>
                         <div onClick={()=>{this.changeDevice('DESKTOP')}}><Icon type={Icon.TYPE.HARDWARE_AND_SOFTWARE__HARDWARE__DESKTOP} /> Desktop</div>
-
                     </GridItem >
                     </Grid>
                     <Sites config={config} deviceType={this.state.deviceType}/>

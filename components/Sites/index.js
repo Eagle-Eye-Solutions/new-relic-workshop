@@ -18,7 +18,6 @@ export default class Sites extends Component {
             //this.setState({data: false})
             this.loadData()
         }
-    
    }
    
 
@@ -122,10 +121,9 @@ export default class Sites extends Component {
                     </GridItem>
                     <GridItem className="LargeNumber" columnSpan={3}>{Number(data[`site_${idx}`][0].AvgDuration).toFixed(2)}
                     <div className="LargeNumberTitle">Average PageLoad</div></GridItem>
-                    <GridItem columnSpan={3}>
+                    <GridItem columnSpan={6}>
                         <LineChart  data={seriesData} /> {/* <SparkLine data={seriesData}/>  */}test
                     </GridItem>
-                    <GridItem className="grey" columnSpan={3}><div>Four</div></GridItem>
                 </Grid>
             ) 
             })
