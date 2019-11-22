@@ -67,11 +67,12 @@ export default class Sites extends Component {
             config.domain.forEach((domain,idx)=>{
             sites.push(
                 <Grid key={domain}>
-                    <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}>
-                    {domain}
+                    <GridItem columnSpan={3}>
+                    <h3>{domain}</h3>
                     </GridItem>
-                    <GridItem className="grey" columnSpan={3}>{data[`site_${idx}`][0].AvgDuration}</GridItem>
-                    <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
+                    <GridItem className="LargeNumber" columnSpan={3}>{Number(data[`site_${idx}`][0].AvgDuration).toFixed(2)}
+                    <div className="LargeNumberTitle">Average PageLoad</div></GridItem>
+                    <GridItem columnSpan={3}><div>Three</div></GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Four</div></GridItem>
                 </Grid>
             ) 
