@@ -23,24 +23,37 @@ export default class Sites extends Component {
                 query($id: Int!) {
                     actor {
                         account(id: $id) {
-                            site_0: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='www.prezzoegifts.co.uk' ") {results}
-                        }
+                                ${this.buildQueryObject()}
+    
+                            }
                     }
                 }
-            `
+           `
+        console.log(query);
         const q = NerdGraphQuery.query({ query: query, variables: variables })
 
         //Process the results of the API request
         q.then(results => {
-            const resultsObj = {
-                site_0: results.data.actor.account.site_0.results
-            }
+            let resultsObj={}
+            this.props.config.domain.forEach((domain,idx)=>{
+                resultsObj[`site_${idx}`]=results.data.actor.account[`site_${idx}`].results
+            })
+            
             //set the state with the data from the query
             this.setState({ data: resultsObj})
         }).catch((error) => { console.log(error); })
     }
 
-    
+    buildQueryObject() 
+    {
+        let domains = this.props.config.domain; 
+        let domainQueries = ''; 
+        domains.forEach((domain, index) => {
+            domainQueries += `site_${index}: nrql(query: "SELECT average(duration) as 'AvgDuration' from PageView where domain='${domain}' ") {results}`
+        });
+
+        return domainQueries;
+    }    
 
     render() {
 
@@ -52,11 +65,11 @@ export default class Sites extends Component {
         if(data) {
             console.log("data",data)
             let sites=[]
-            config.domain.forEach((domain)=>{
+            config.domain.forEach((domain,idx)=>{
             sites.push(
                 <Grid key={domain}>
                     <GridItem className="grey" style={{"border":"solid 1px red"}} columnSpan={3}>
-                        {data.site_0[0].AvgDuration}
+                        {data[`site_${idx}`][0].AvgDuration}
                     </GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Two</div></GridItem>
                     <GridItem className="grey" columnSpan={3}><div>Three</div></GridItem>
