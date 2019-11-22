@@ -8,14 +8,21 @@ import Sites from "../../components/Sites"
 export default class WorkshopNerdletNerdlet extends React.Component {
     render() {
 
+        const config={
+            domain: ["www.prezzoegifts.co.uk",
+                "gigglingsquidgift.com",
+                "www.vintageinngifts.co.uk",
+                "www.sizzlingpubgifts.co.uk"
+            ]
+        }
 
         return <>
             <Grid>
                 <GridItem className="headerRow" columnSpan={12}>
                     <Header title="Eagle Eye Dashboard" subtitle="All the apps in one place" />
-                </GridItem>
+                </GridItem >
             </Grid>
-            <Sites />
+            <Sites config={config}/>
         </>
     }
 }

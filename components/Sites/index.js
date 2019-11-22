@@ -6,14 +6,7 @@ export default class Sites extends Component {
 
     render() {
 
-       // const { title, subtitle } = this.props;
-       const config={
-        domain: ["www.prezzoegifts.co.uk",
-            "gigglingsquidgift.com",
-            "www.vintageinngifts.co.uk",
-            "www.sizzlingpubgifts.co.uk"
-        ]
-    }
+        const { config } = this.props
     
         let sites=[]
         config.domain.forEach((domain)=>{
